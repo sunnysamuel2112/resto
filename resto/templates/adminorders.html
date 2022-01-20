@@ -1,0 +1,61 @@
+
+
+
+
+
+
+
+
+
+
+{% extends 'adminbase.html' %}
+
+{%  block title %}
+remove dish
+{% endblock %}
+
+{%  block content %}
+
+
+
+
+
+
+
+<table align="center" class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col"><u>Dish Name</u> </th>
+            <th scope="col"><u>Dish Price</u> </th>
+            <th scope="col"><u>Option</u> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for order,dish in adminorderitems %}
+        <tr>
+            <td>{{ dish.dish_name }}</td>
+            <td>{{ dish.dish_price }}</td>
+            <td>
+                
+                <a href="/admindelorder/{{ order.order_id }}">
+                    <button class="btn btn-outline btn-info">Serve</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<style>
+    th,
+    td,
+    tr {
+        text-align: center;
+    }
+</style>
+
+
+{% endblock %}

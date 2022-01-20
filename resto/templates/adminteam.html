@@ -1,0 +1,128 @@
+{% extends 'adminbase.html' %}
+
+{%  block title %}
+Team
+{% endblock %}
+
+{%  block content %}
+
+<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay"
+    style="background-image: url(static/img/reservation-bg.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-content bg-white p-5 shadow">
+                    <div class="heading-section text-center">
+
+                        <h2>
+                            Add Employee
+                        </h2>
+                    </div>
+                    <form class="form-group" method="POST" action="#" name="contact-us">
+                        {{  form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                {{  form.empname(class="form-control" , placeholder="Name") }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.empdesg(class="form-control" , placeholder="Designation" ) }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.empphno(class="form-control" , placeholder="Phone Number" ) }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.empsalary(class="form-control" , placeholder="Salary" ) }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.empaddress(class="form-control" , placeholder="Address" ) }}
+                            </div>
+                            <div class="col-md-12 text-center">
+                                {{ form.submit(class="btn btn-primary btn-shadow btn-lg")   }}
+                            </div>
+
+                        </div>
+                    </form>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<table align="center" class="table table-hover table-dark">
+    <h2 align = "center">
+        <U>
+            EMPLOYEES
+
+        </U>
+    </h2>
+    <BR>
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col"><u>SSN</u> </th>
+            <th scope="col"><u>NAME</u> </th>
+            <th scope="col"><u>DESIGNATION</u> </th>
+            <th scope="col"><u>CONTACT NO</u> </th>
+            <th scope="col"><u>SALARY</u> </th>
+            <th scope="col"><u>ADDRESS</u> </th>
+            <th scope="col"><u>OPTIONS</u> </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for emp in allteam %}
+        <tr>
+            <td>{{ emp.emp_id }}</td>
+            <td>{{ emp.emp_name }}</td>
+            <td>{{ emp.emp_desg }}</td>
+            <td>{{ emp.emp_phno }}</td>
+            <td>{{ emp.emp_salary }}₹</td>
+            <td>{{ emp.emp_address }}</td>
+            <td>
+
+<!--                 <a href="/adminupteam/{{ emp.emp_id }}">
+                    <button class="btn btn-outline btn-info">Update</button>
+                </a> -->
+                <a href="/admindelteam/{{ emp.emp_id }}">
+                    <button class="btn btn-outline btn-info">Remove</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<style>
+    thead {
+        color: rgb(0, 0, 0);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgb(255, 255, 255);
+        text-align: center;
+
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+
+{% endblock %}

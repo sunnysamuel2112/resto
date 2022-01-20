@@ -1,0 +1,58 @@
+{% extends 'adminbase.html' %}
+
+{%  block title %}
+menu order
+{% endblock %}
+
+
+{%  block content %}
+
+
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <!-- <th scope="col"><u>DISH ID</u> </th> -->
+            <th scope="col"><u>DISH NAME</u></th>
+            <th scope="col"><u>DISH PRICE</u></th>
+            <th scope="col"><u>OPTIONS</u></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for item in toshowdish %}
+        <tr>
+            <!-- <td>{{ item.dish_id }}</td> -->
+            <td>{{ item.dish_name }}</td>
+            <td>{{ item.dish_price }}</td>
+            <td>
+                <button class="btn btn-outline btn-info">add to cart</button>
+                <button class="btn btn-outline btn-danger">quantity</button>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}

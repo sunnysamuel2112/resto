@@ -1,0 +1,113 @@
+{% extends 'custlogbase.html' %}
+
+{% block title %}
+Menu
+{% endblock %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+    <div class="col-8">
+        <h2>
+            Menu
+        </h2>
+        <table align="center" class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col"><u>Dish Name</u> </th>
+                    <th scope="col"><u>Price</u> </th>
+                    <th scope="col"><u>Description</u> </th>
+                    <th scope="col"><u>OPTIONS</u></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                {% for dishes in menutodisplay %}
+                <tr>
+                    <td>{{ dishes.dish_name }}</td>
+                    <td>₹{{ dishes.dish_price }}</td>
+                    <td>{{ dishes.dish_desc }}</td>
+                    <td>
+
+                        <a href="/cartadd/{{ dishes.dish_id }}">
+                            <button class="btn btn-outline btn-info">Add</button>
+                        </a>
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        <style>
+            th,
+            td,
+            tr {
+                text-align: center;
+            }
+        </style>
+
+    </div>
+
+    <div class="col-4">
+        <h2>
+            Cart
+        </h2>
+        <table align="center" class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col"><u>Dish Name</u> </th>
+                    <th scope="col"><u>Dish Price</u> </th>
+                    <th scope="col"><u>Option</u> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                {% for order,dish in orderitems %}
+                <tr>
+                    <td>{{ dish.dish_name }}</td>
+                    <td>₹{{ dish.dish_price }}</td>
+                    <td>
+                        
+                        <a href="/delorder/{{ order.order_id }}">
+                            <button class="btn btn-outline btn-danger">remove</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        <table class="table table-hover">
+            <tr>
+                <th scope="row">Total :</th>
+                <td>₹{{ total }}</td>
+            </tr>
+        </table>
+        <table class="table table-hover">
+
+            <tr>
+                <form method="POST">
+                    {{  pord.hidden_tag() }}
+                    {{ pord.submit(class="btn btn-lg btn-block btn-primary")   }}
+                    
+                    
+                </form>
+            </tr>
+        </table>
+            <style>
+            th,
+            td,
+            tr {
+                text-align: center;
+            }
+        </style>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'adminbase.html' %}
+
+{%  block title %}
+Reservation
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block content  %}
+
+<!-- Reservation Section -->
+
+
+
+<table align="center" class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col"><u>Customer name</u> </th>
+            <th scope="col"><u>Customer PhNo</u></th>
+            <th scope="col"><u>Reservation date</u></th>
+            <th scope="col"><u>Reservation time</u></th>
+<!--             <th scope="col"><u>Extra Info</u></th> -->
+            <th scope="col"><u>Headcount</u></th>
+            <th scope="col"><u>Options</u></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for reservations in toshowreserve %}
+        <tr>
+            <td>{{ reservations.cust_name }}</td>
+            <td>{{ reservations.cust_phno }}</td>
+            <td>
+                {{  reservations.reserve_date }}
+            </td>
+            <td>
+                {{  reservations.reserve_time }}
+            </td>
+<!--             <td>
+                {{ reservations.reserve_content  }}
+            </td> -->
+            <td>{{ reservations.reserve_hc }}</td>
+            <td>
+                <a href="/cancel/{{ reservations.reserve_id }}">
+                    <button class="btn btn-outline btn-danger">Cancel</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<style>
+    th,
+    td,
+    tr {
+        text-align: center;
+    }
+</style>
+
+
+<!-- End of Reservation Section -->
+
+
+{%  endblock %}

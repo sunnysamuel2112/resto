@@ -1,0 +1,54 @@
+{% extends 'loginbase.html' %}
+
+{%  block title %}
+Login
+{% endblock %}
+
+
+{%  block content %}
+<!-- login Section -->
+<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay"
+    style="background-image: url(static/img/reservation-bg.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-content bg-white p-5 shadow">
+                    <div class="heading-section text-center">
+
+                        <h2>
+                            Login
+                        </h2>
+                    </div>
+                    <form class="form-login" method="POST" name="contact-us">
+                        {{  form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                {{  form.loginusername(class="form-control", placeholder="USER NAME")  }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.loginpassword(class="form-control", placeholder="PASSWORD")  }}
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <h6>Dont have an account? <a href="{{  url_for('registerpage') }}">Register now </a>
+                                </h6>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-md-12 text-center">
+                                {{ form.submit(class="btn btn-primary btn-shadow btn-lg")   }}
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End of Reservation Section -->
+
+
+{% endblock  %}

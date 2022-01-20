@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{%  block title %}
+Register
+{% endblock %}
+
+{%  block content %}
+
+
+
+
+
+<body>
+
+    <h1 align="center">
+
+        PLEASE CREATE YOUR ACCOUNT
+
+    </h1>
+    <br>
+    
+    <div>
+        <div align="center" class="container">
+            <table align="center">
+                <form method="POST" class="form-control" style="color:rgb(143, 53, 53)">
+                    {{  form.hidden_tag() }}
+                    <tr>
+                        <!--                         <td>
+                            {{  form.username.label() }}
+                        </td>
+ -->
+                        <td>
+                            {{  form.username(class="form-control", placeholder="CUSTOMER NAME")  }}
+                            <br>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <!--                         <td>
+                            {{  form.password.label() }}
+                        </td> -->
+
+                        <td>
+                            {{  form.password(class="form-control", placeholder="PASSWORD")  }}
+                            <br>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <!--                         <td>
+                            {{  form.confirmpassword.label() }}
+                        </td>
+ -->
+                        <td>
+                            {{  form.confirmpassword(class="form-control", placeholder="CONFIRM PASSWORD")  }}
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!--                         <td>
+                            {{  form.userphno.label()  }}
+                        </td> -->
+                        <td>
+                            {{  form.userphno(class="form-control", placeholder="PHONE NUMBER")  }}
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!--                         <td>
+                            {{ form.useremail.label()  }}
+                        </td> -->
+                        <td>
+                            {{  form.useremail(class="form-control", placeholder="E-MAIL")  }}
+                            <br>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+                        <!--                         <td>
+
+                        </td> -->
+                        <td>
+
+                            <div class="col-md-12 text-center">
+                                <br>
+                                <h6>Already have an Account? <a href="{{  url_for('login') }}">Login </a></h6>
+                                <br>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <!--                         <td>
+
+                        </td> -->
+
+                        <td align="center">
+                            {{ form.submit(class="btn btn-lg btn-primary" , placeholder="CREATE ACCOUNT")   }}
+                        </td>
+
+                    </tr>
+
+
+                </form>
+            </table>
+
+        </div>
+
+
+    </div>
+    <br>
+    <br>
+</body>
+
+
+{%  endblock %}

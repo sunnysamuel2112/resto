@@ -1,0 +1,94 @@
+{% extends 'adminbase.html' %}
+
+{%  block title %}
+add dish
+{% endblock %}
+
+
+
+{% block content %}
+<!-- Reservation Section -->
+<!-- Reservation Section -->
+<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay"
+    style="background-image: url(static/img/reservation-bg.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-content bg-white p-5 shadow">
+                    <div class="heading-section text-center">
+
+                        <h2>
+                            Add New Dish
+                        </h2>
+                    </div>
+                    <form class="form-group" method="post" name="contact-us">
+                        {{  form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                {{  form.dishname(class="form-control", placeholder="dish name")  }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.dishprice(class="form-control", placeholder="dish price")  }}
+                            </div>
+                            <div class="col-md-12 form-group">
+                                {{  form.dishdesc(class="form-control", placeholder="dish description")  }}
+                            </div>
+                            <div class="col-md-12 text-center">
+                                {{ form.submit(class="btn btn-primary btn-shadow btn-lg")   }}
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<table align="center" class="table table-hover table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col"><u>DISH ID</u> </th>
+            <th scope="col"><u>DISH NAME</u></th>
+            <th scope="col"><u>DISH DESCRIPTION</u></th>
+            <th scope="col"><u>DISH PRICE</u></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for item in toshowdish %}
+        <tr>
+            <td>{{ item.dish_id }}</td>
+            <td>{{ item.dish_name }}</td>
+            <td>{{ item.dish_desc }}</td>
+            <td>{{ item.dish_price }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<style>
+    thead {
+        color: rgb(0, 0, 0);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgb(255, 255, 255);
+        text-align: center;
+
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+
+{%  endblock %}

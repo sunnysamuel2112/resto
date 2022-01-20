@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            add dish
+        </title>
+    </head>
+
+    <body>
+        <h1 align="center">
+
+            PLEASE ADD YOUR DISH DETAILS
+
+        </h1>
+
+        <div align="center" class="form-group">
+            <table>
+                <form method="POST" class="form-register" style="color:rgb(143, 53, 53)">
+                    {{  form.hidden_tag() }}
+
+                    <tr>
+                        <td>
+                            {{  form.dishname.label(class="form-control-label") }}
+                        </td>
+
+                        <td>
+                            {{  form.dishname(class="form-control", placeholder="dish name")  }}
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>
+                            {{  form.dishprice.label(class="form-control-label") }}
+                        </td>
+
+                        <td>
+                            {{  form.dishprice(class="form-control", placeholder="dish price")  }}
+                        </td>
+                    </tr>
+
+
+                    <tr>
+
+                    </tr>
+                    <tr>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            {{ form.submit(class="btn btn-outline-info")   }}
+                        </td>
+                    </tr>
+
+
+
+
+
+
+                </form>
+            </table>
+        </div>
+
+    </body>
+
+</html>
