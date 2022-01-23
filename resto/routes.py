@@ -238,7 +238,7 @@ def showorder():
 
 @app.route('/adminorders')
 def adminorders():
-    adminorderitems = db.session.query(order, menu).join(menu).all()
+    adminorderitems = db.session.query(order,menu,customer).select_from(order).join(menu).join(customer).all()
 
     return render_template('adminorders.html', adminorderitems=adminorderitems)
 
@@ -259,6 +259,7 @@ def menucust():
     if add_dish.validate_on_submit():
         print(add_dish)
     menutodisplay = menu.query.order_by(menu.dish_price)
+    thatcustorder
     orderitems = db.session.query(order, menu).join(menu).all()
     if pord.validate_on_submit():
         flash('Your Order has been Placed!!', category="success")

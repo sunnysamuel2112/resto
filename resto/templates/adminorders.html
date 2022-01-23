@@ -26,6 +26,8 @@ remove dish
     <thead>
         <tr>
             <!-- Your Columns HERE -->
+            <th scope="col"><u>Order No</u> </th>
+            <th scope="col"><u>Customer Name</u> </th>
             <th scope="col"><u>Dish Name</u> </th>
             <th scope="col"><u>Dish Price</u> </th>
             <th scope="col"><u>Option</u> </th>
@@ -33,8 +35,10 @@ remove dish
     </thead>
     <tbody>
         <!-- Your rows inside the table HERE: -->
-        {% for order,dish in adminorderitems %}
+        {% for order,dish,custo in adminorderitems %}
         <tr>
+            <td>{{ order.order_id }}</td>
+            <td>{{ custo.cust_name }}</td>
             <td>{{ dish.dish_name }}</td>
             <td>{{ dish.dish_price }}</td>
             <td>
