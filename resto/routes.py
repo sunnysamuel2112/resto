@@ -259,7 +259,6 @@ def menucust():
     if add_dish.validate_on_submit():
         print(add_dish)
     menutodisplay = menu.query.order_by(menu.dish_price)
-    thatcustorder
     orderitems = db.session.query(order, menu).join(menu).all()
     if pord.validate_on_submit():
         flash('Your Order has been Placed!!', category="success")
