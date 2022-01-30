@@ -51,7 +51,7 @@ def login():
 
 # routes
 
-@app.route('/menu')
+@app.route('/menu12345')
 def menupage():
     menu1 = menu.query.all()
     userquery = user.query.all()
@@ -374,25 +374,3 @@ def admindelteam(emp_id):
         return redirect(url_for('adminteam'))
 
 
-""" 
-#update emp details
-@app.route('/adminupteam/<int:emp_id>', methods=['POST', 'GET'])
-def adminupteam(emp_id):
-    form = updatedishForm()
-    emp_to_update = menu.query.get_or_404(dish_id)
-
-    if request.method == 'POST':
-        dish_to_update.dish_name = form.dishname.data
-        dish_to_update.dish_price = form.dishprice.data
-        dish_to_update.dish_desc = form.dishdesc.data
-
-        try:
-            db.session.commit()
-            return 'updated'
-        except:
-            return 'cudnt update'
-
-    return render_template('updatedish.html',  dish_to_update=dish_to_update, toshowdish=menu1, form=form)
-
-
- """
