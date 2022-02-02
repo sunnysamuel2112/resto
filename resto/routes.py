@@ -49,6 +49,9 @@ def login():
     return render_template('login.html', form=form)
 
 
+
+
+
 # routes
 
 @app.route('/menu12345')
@@ -109,17 +112,20 @@ def registerpage():
                            cust_phno=form.userphno.data
 
                            )
-        db.session.add(user1)
-        db.session.add(newcust)
-        db.session.commit()
-        message = 'Thank you for Registering\nHere is your Login Credentials:\nUsername: %s\nPassword: %s\nLogin using these credentials\nWe hope you eat to your heart\'s content!!!!\n\n\n\nfor further info contact us at 8970514735,\nThank You.' % (
-            form.username.data, form.password.data)
-        subject = 'Hello from RESTO, %s' % form.username.data
-        msg = Message(body=message, subject=subject,
-                      sender='restofoodservice@gmail.com', recipients=[form.useremail.data])
-        mail.send(msg)
-        flash('registration succesfull', category="success")
-        return redirect(url_for('menucust'))
+        try:
+            message = 'Thank you for Registering\nHere is your Login Credentials:\nUsername: %s\nPassword: %s\nLogin using these credentials\nWe hope you eat to your heart\'s content!!!!\n\n\n\nfor further info contact us at 8970514735,\nThank You.' % (
+                form.username.data, form.password.data)
+            subject = 'Hello from RESTO, %s' % form.username.data
+            msg = Message(body=message, subject=subject,
+                          sender='restofoodservice@gmail.com', recipients=[form.useremail.data])
+            mail.send(msg)
+            db.session.add(user1)
+            db.session.add(newcust)
+            db.session.commit()
+            flash('registration succesfull', category="success")
+            return redirect(url_for('menucust'))
+        except:
+            flash('Looks like you dont have Internet', category="danger")
     if form.errors != {}:
         for err_msg in form.errors.values():
             flash(
@@ -146,19 +152,21 @@ def reservation():
             reserve_content=form.reservecontent.data)
 
         if reserve.query.count() == 1 or 2 or 3 or 4 or 5:
-            db.session.add(reservation1)
-            db.session.commit()
-            message = f'Hi {form.customername.data},\nThank you for booking your table with RESTO!\nYour reservation for {form.reserveheadcount.data} people on {form.reservedate.data}  is confirmed.\nFor any changes please contact us.\n\nYour Reservation details are:\nName: {form.customername.data}\nPhone Number: {form.customerphno.data}\nDate: {form.reservedate.data}\nTime: {form.reservetime.data}\n\nWe look forward to serving you.\n\nFor further info contact us at : 7019003679,8970514735\nThank You.'
-            subject = 'Hello from RESTO, %s' % form.customername.data
-            msg = Message(body=message, subject=subject,
-                          sender='restofoodservice@gmail.com', recipients=[form.customeremail.data])
-            mail.send(msg)
+            try:
+                message = f'Hi {form.customername.data},\nThank you for booking your table with RESTO!\nYour reservation for {form.reserveheadcount.data} people on {form.reservedate.data}  is confirmed.\nFor any changes please contact us.\n\nYour Reservation details are:\nName: {form.customername.data}\nPhone Number: {form.customerphno.data}\nDate: {form.reservedate.data}\nTime: {form.reservetime.data}\n\nWe look forward to serving you.\n\nFor further info contact us at : 7019003679,8970514735\nThank You.'
+                subject = 'Hello from RESTO, %s' % form.customername.data
+                msg = Message(body=message, subject=subject,
+                              sender='restofoodservice@gmail.com', recipients=[form.customeremail.data])
+                mail.send(msg)
+                db.session.add(reservation1)
+                db.session.commit()
+                flash('Reservation successfull!!!', category="success")
+                return redirect(url_for('index'))
+            except:
+                flash("Looks like you dont have Internet", category="danger")
         else:
             flash('All Tables are Reserved, Book After a While. ', category="danger")
             return redirect(url_for('reservation'))
-        if form.errors == {}:
-            flash('Reservation successfull!!!', category="success")
-            return redirect(url_for('index'))
     if form.errors != {}:
         for err_msg in form.errors.values():
             flash(
